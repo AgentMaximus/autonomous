@@ -3,11 +3,15 @@
 ## Overview
 The `autonomous` project is designed to provide an automated solution for XXX. This document outlines setup, usage, and deployment instructions.
 
+---
+
 ## Deployment
 
 ### Prerequisites
 - Access to the deployment server.
 - Deploy keys for authentication (secure access).
+
+---
 
 ### Instructions
 1. **Clone the Repository**
@@ -29,14 +33,22 @@ The `autonomous` project is designed to provide an automated solution for XXX. T
 - Add SSH keys for external access if required.
 - Monitor logs carefully after starting the server for issues.
 
+---
+
 ## Usage
 - Outline the typical usage scenarios of your software here.
+
+---
 
 ## Contributing
 - Fork the repository and create a pull request to contribute.
 
+---
+
 ## License
 - Licensed under the MIT License.
+
+---
 
 ## Important Updates
 - Secure deployment keys and rotate regularly for security.
