@@ -1,47 +1,65 @@
 # Autonomous Project
 
 ## Overview
-The `autonomous` project is designed to provide an automated solution for XXX. This document outlines setup, usage, and deployment instructions.
+The `autonomous` project provides an automated solution for real-time server management using FastAPI and a git changes watcher. This document outlines setup, usage, and deployment instructions.
 
 ---
 
 ## Deployment
 
 ### Prerequisites
-- Access to the deployment server.
-- Deploy keys for authentication (secure access).
+- Python 3.8+
+- Git installed on your machine.
 
 ---
 
-### Instructions
+### Setup Instructions
+
 1. **Clone the Repository**
    ```bash
    git clone https://github.com/AgentMaximus/autonomous.git
    ```
 2. **Navigate to the Project Directory**
    ```bash
-   cd autonomous/prod_server
+   cd autonomous/dev
    ```
-3. **Configure Your Environment**
-   - Follow the internal guidelines to set up the environment.
-4. **Start the Server**
+3. **Set up Virtual Environment**
    ```bash
-   python start_server.py
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+4. **Install Dependencies**
+   ```bash
+   pip install -r requirements.txt
    ```
 
-### Notes
-- Add SSH keys for external access if required.
-- Monitor logs carefully after starting the server for issues.
+---
+
+## Running the Server
+
+1. **Start the FastAPI Server**
+   - Ensure you are in the `dev` directory where `main.py` is located.
+   ```bash
+   uvicorn main:app --reload
+   ```
+   - Access the server at `http://localhost:8000`
+
+2. **Run the Watcher for Git Changes**
+   - This will automatically refresh the server on changes.
+   ```bash
+   python watcher.py
+   ```
+
+---
+
+## Important Notes
+- The server automatically reloads when changes in Git-tracked files are detected.
+- Ensure all necessary environment variables are configured.
 
 ---
 
 ## Usage
-- Outline the typical usage scenarios of your software here.
-
----
-
-## Contributing
-- Fork the repository and create a pull request to contribute.
+- FastAPI provides an interactive API documentation at `/docs`.
 
 ---
 
@@ -50,7 +68,9 @@ The `autonomous` project is designed to provide an automated solution for XXX. T
 
 ---
 
-## Important Updates
-- Secure deployment keys and rotate regularly for security.
-- Update the server environment for security patches as needed.
-- Document any changes to the deployment process for team consistency.
+## Contributing
+- Fork this repository and propose your changes via pull request.
+
+---
+
+This document was last updated on Dec 16, 2024.
