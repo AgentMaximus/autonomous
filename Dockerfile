@@ -16,5 +16,5 @@ EXPOSE 8000
 # Define environment variable
 ENV NAME World
 
-# Run main.py when the container launches
-CMD ["uvicorn", "dev.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+# Start both the watcher and the FastAPI app
+CMD ["python", "dev/watcher.py"]
