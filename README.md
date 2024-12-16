@@ -32,7 +32,13 @@ To execute the main script, navigate to the directory with the scripts and run:
 python main.py
 ```
 
-This will initiate the primary function of the autonomous management tool, enabling users to handle tasks effectively.
+Or to start the FastAPI server for the web interface:
+
+```bash
+uvicorn fastapi_app:app --reload
+```
+
+This will start a web server for the autonomous management tool, enabling users to handle tasks effectively via a web-based interface.
 
 ---
 
