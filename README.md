@@ -42,6 +42,24 @@ This will start a web server for the autonomous management tool, enabling users 
 
 ---
 
+## Testing
+
+To run the unittests for this project, you can use the following command:
+```bash
+python3 -m unittest discover -s . -p "test_*.py"
+```
+
+You can set up the tests to execute through CI/CD to maintain quality and catch any integration issues.
+
+---
+
+## Issues
+
+- If running into environment specific issues or discrepancies with data parsing, refer to specific logs and verify all dependencies align with expected versions.
+- Engine specification for `pandas.read_excel()` must be explicitly provided if handling `.xlsx` files.
+
+---
+
 ## Deployment
 
 1. **Containerization**

@@ -2,6 +2,8 @@ import unittest
 from fastapi.testclient import TestClient
 from fastapi_app import app
 from unittest.mock import patch
+import pandas as pd
+from io import BytesIO
 
 class TestFastAPI(unittest.TestCase):
     def setUp(self):
@@ -14,14 +16,19 @@ class TestFastAPI(unittest.TestCase):
 
     @patch('requests.get')
     def test_get_natural_gas_prices(self, mock_get):
-        # Configure the mock to return a response with an OK status
+        # Create a small DataFrame
+        df = pd.DataFrame({
+          'Date': ['2021-01-01'],
+          'Price': [2.5]
+        })
+        
+        # Write the DataFrame to a BytesIO object as Excel
+        excel_buffer = BytesIO()
+        df.to_excel(excel_buffer, index=False, engine='openpyxl')
         mock_get.return_value.status_code = 200
-        mock_get.return_value.content = b"Some content"  # Mocked file content
+        mock_get.return_value.content = excel_buffer.getvalue()
         
         response = self.client.get("/natural_gas_prices")
         self.assertEqual(response.status_code, 200)
-        # Test that the response is a list
         self.assertIsInstance(response.json(), list)
-
-if __name__ == '__main__':
-    unittest.main()
+        self.assertEqual(response.json(), [{"Date": "2021-01-01", "Price": 2.5}])  # Expected structure
